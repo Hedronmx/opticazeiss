@@ -1,0 +1,5 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.hedronmx.optica
+electronVersion: 4.2.0
