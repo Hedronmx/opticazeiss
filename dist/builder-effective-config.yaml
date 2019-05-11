@@ -6,5 +6,5 @@ publish:
   - provider: github
     owner: Hedronmx
     repo: opticazeiss
-    token: <stripped sensitive data>
+    releaseType: release
 electronVersion: 4.2.0

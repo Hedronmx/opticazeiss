@@ -30,8 +30,7 @@
         "provider": "github",
         "owner": "Hedronmx",
         "repo": "opticazeiss",
-        "releaseType": "release",
-        "token": "b60508a61324c28db7b28acbb3b47fd56c9dd246"
+        "releaseType": "release"
       }
     ]
   },
