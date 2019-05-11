@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "optica-zeiss",
+  "version": "1.0.2",
+  "description": "Sistema de Clientes Optica Zeiss",
   "main": "main.js",
   "repository": "https://github.com/Hedronmx/opticazeiss",
   "keywords": [
@@ -27,13 +27,18 @@
     "appId": "com.hedronmx.optica",
      "publish": [
           {
-            "provider": "github"
+            "provider": "github",
+            "owner": "Hedronmx",
+            "repo": "opticazeiss",
+            "releaseType": "release",
+            "token": "b60508a61324c28db7b28acbb3b47fd56c9dd246"
           }
         ]
   },
   "scripts": {
       "pack": "electron-builder --dir",
       "dist": "electron-builder",
+      "release": "electron-builder --win -p always",
       "start": "electron ."
     }
 }

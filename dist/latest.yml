@@ -1,0 +1,8 @@
+version: 1.0.0
+files:
+  - url: optica-zeiss-setup-1.0.0.exe
+    sha512: qS2UBjf/e+mOmnO6EWTuYx/V5L7skf6TCrwdHAkFdkaQqgaB3SQJ0CilHX0aaxBJuNi3iEyUsZlVRwKr7kCLGw==
+    size: 44962718
+path: optica-zeiss-setup-1.0.0.exe
+sha512: qS2UBjf/e+mOmnO6EWTuYx/V5L7skf6TCrwdHAkFdkaQqgaB3SQJ0CilHX0aaxBJuNi3iEyUsZlVRwKr7kCLGw==
+releaseDate: '2019-05-11T20:36:30.741Z'

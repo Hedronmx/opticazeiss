@@ -2,4 +2,9 @@ directories:
   output: dist
   buildResources: build
 appId: com.hedronmx.optica
+publish:
+  - provider: github
+    owner: Hedronmx
+    repo: opticazeiss
+    token: <stripped sensitive data>
 electronVersion: 4.2.0
