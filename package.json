@@ -1,6 +1,6 @@
 {
   "name": "optica-zeiss",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Sistema de Clientes Optica Zeiss",
   "main": "main.js",
   "repository": "https://github.com/Hedronmx/opticazeiss",
@@ -25,20 +25,20 @@
   },
   "build": {
     "appId": "com.hedronmx.optica",
-     "publish": [
-          {
-            "provider": "github",
-            "owner": "Hedronmx",
-            "repo": "opticazeiss",
-            "releaseType": "release",
-            "token": "b60508a61324c28db7b28acbb3b47fd56c9dd246"
-          }
-        ]
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Hedronmx",
+        "repo": "opticazeiss",
+        "releaseType": "release",
+        "token": "b60508a61324c28db7b28acbb3b47fd56c9dd246"
+      }
+    ]
   },
   "scripts": {
-      "pack": "electron-builder --dir",
-      "dist": "electron-builder",
-      "release": "electron-builder --win -p always",
-      "start": "electron ."
-    }
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "release": "electron-builder --win -p always",
+    "start": "electron ."
+  }
 }
