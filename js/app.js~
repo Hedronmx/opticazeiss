@@ -477,8 +477,7 @@ forma.addEventListener('submit', (e) => {
             avceod: forma.avceod.value,
             avceoi: forma.avceoi.value,
             nota: forma.nota.value,
-            ultimacita: forma.ultimacita.value,
-            fecha: fecha.toDateString()
+            ultimacita: forma.ultimacita.value
         })
         .then(function() {
             console.log("Document successfully written!");
