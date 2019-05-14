@@ -898,7 +898,6 @@
                  $("#actualizarerror").hide();
                  $("#pdfguardado").hide();
                  $("#citaok").hide();
-                 $("#datepickerreceta").datepicker();
              });
          </script>
 </body>

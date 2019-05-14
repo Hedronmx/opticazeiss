@@ -864,7 +864,6 @@ receta.addEventListener('submit', (e) => {
     e.preventDefault();
 var fecha = new Date();
 id = fecha.toDateString()
-console.log(id)
     db.collection('clientes').doc(previd).collection('recetas').add({
             sphod: receta.sphodreceta.value,
             cilod: receta.cilodreceta.value,
