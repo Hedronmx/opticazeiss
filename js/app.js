@@ -177,7 +177,7 @@ function createreceta(doc) {
     eje.innerText='EJE';
     add.innerText='ADD';
     diam.innerText='DIAM';
-    altura.innerText='ALTURA';
+    altura.innerText='NOTA';
     avsc.innerText='AVSC';
     avce.innerText='AVCE';
     quera.innerText='QUERATOMETRIA';
@@ -278,10 +278,10 @@ function createreceta(doc) {
     tr.appendChild(eje);
     tr.appendChild(add);
     tr.appendChild(diam);
-    tr.appendChild(altura);
+    tr.appendChild(quera);
     tr.appendChild(avsc);
     tr.appendChild(avce);
-    tr.appendChild(quera);
+    tr.appendChild(altura);
 
     tbody.appendChild(trod);
     tbody.appendChild(troi);
@@ -291,10 +291,10 @@ function createreceta(doc) {
     trod.appendChild(ejeod)
     trod.appendChild(addod)
     trod.appendChild(diamod)
-    trod.appendChild(alturaod)
+    trod.appendChild(queraod)
     trod.appendChild(avscod)
     trod.appendChild(avceod)
-    trod.appendChild(queraod)
+    trod.appendChild(alturaod)
 
     troi.appendChild(oi);
     troi.appendChild(sphoi);
@@ -302,10 +302,10 @@ function createreceta(doc) {
     troi.appendChild(ejeoi)
     troi.appendChild(addoi)
     troi.appendChild(diamoi)
-    troi.appendChild(alturaoi)
+    troi.appendChild(queraoi)
     troi.appendChild(avscoi)
     troi.appendChild(avceoi)
-    troi.appendChild(queraoi)
+    troi.appendChild(alturaoi)
 
     rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)

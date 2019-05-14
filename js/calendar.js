@@ -45,20 +45,20 @@ function collect (){
 	        if (change.type == 'added') {
 	                var cal ={}
 	                var cal2 = {}
-	                
+
 	                if (change.doc.data().proximacita != ''){
 	                    cal.start=change.doc.data().proximacita
 	                } else {
 	                    cal.start = '1/1/1990'
 	                }
-    	            
+
     	            if (change.doc.data().proximacita != ''){
 	                    cal.end = change.doc.data().proximacita
 	                } else {
 	                    cal.end = '1/1/1990'
 	                }
-	                
-	                
+
+
 	                if (change.doc.data().nuevafecha != undefined){
 	                    cal2.start=change.doc.data().nuevafecha
 	                    cal2.title=change.doc.data().nombre
@@ -66,19 +66,19 @@ function collect (){
 	                } else {
 	                    cal2.start = '1/1/1990'
 	                }
-    	            
+
     	            if (change.doc.data().nuevafecha != ''){
 	                    cal2.end = change.doc.data().nuevafecha
 	                } else {
 	                    cal2.end = '1/1/1990'
 	                }
-    	            
+
     	            crearlista(change.doc)
-    	            
+
     	            cal.title=change.doc.data().nombre
     	            cal.id=change.doc.id
-    	            
-    	            
+
+
     	            if( cal2 === undefined || cal2.length == 0 ){
     	                eventos.push(cal)
     	            } else {
@@ -101,23 +101,23 @@ function collect (){
 	            index = eventos.findIndex(x => x.id === change.doc.id);
 	            console.log(index)
 	            eventos.splice(index, 1);
-                
+
                 var cal ={}
                 var cal2 = {}
-                
+
                 if (change.doc.data().proximacita != ''){
                     cal.start=change.doc.data().proximacita
                 } else {
                     cal.start = '1/1/1990'
                 }
-	            
+
 	            if (change.doc.data().proximacita != ''){
                     cal.end = change.doc.data().proximacita
                 } else {
                     cal.end = '1/1/1990'
                 }
-                
-                
+
+
                 if (change.doc.data().nuevafecha != undefined){
                     console.log(change.doc.data().nuevafecha)
                     cal2.start=change.doc.data().nuevafecha
@@ -126,24 +126,24 @@ function collect (){
                 } else {
                     cal2.start = '1/1/1990'
                 }
-	            
+
 	            if (change.doc.data().nuevafecha != ''){
                     cal2.end = change.doc.data().nuevafecha
                 } else {
                     cal2.end = '1/1/1990'
                 }
-	            
+
 	            cal.title=change.doc.data().nombre
 	            cal.id=change.doc.id
-	            
-	            
+
+
 	            if( cal2 === undefined || cal2.length == 0 ){
 	                eventos.push(cal)
 	            } else {
 	                eventos.push(cal)
 	                eventos.push(cal2)
 	            }
-	            
+
 	            $('#calendar').fullCalendar('removeEvents');
                 $('#calendar').fullCalendar('addEventSource', eventos);
                 $('#calendar').fullCalendar('rerenderEvents');
@@ -410,7 +410,7 @@ function cerrar() {
     $$.single("#datepickercliente").setAttribute("value", cliente.proximacita)
 
     $$.single("#notacliente").innerText = cliente.nota
-    
+
 
 }
 
@@ -650,7 +650,7 @@ id = fecha.toDateString()
 
 function nuevacita(){
     $('.nuevacita').modal('show');
-    
+
 }
 
 const ul = document.querySelector('#clientesselect')
@@ -677,8 +677,8 @@ function guardarcita(id){
 formanuevacita.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(formanuevacita.nuevafecha.value)
-    
-    
+
+
     db.collection('clientes').doc(idcita).update({
             nuevafecha:formanuevacita.nuevafecha.value
         })
@@ -691,8 +691,8 @@ formanuevacita.addEventListener('submit', (e) => {
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
-    
-    
+
+
 });
 
 
@@ -781,7 +781,7 @@ function createreceta(doc) {
     eje.innerText='EJE';
     add.innerText='ADD';
     diam.innerText='DIAM';
-    altura.innerText='ALTURA';
+    altura.innerText='NOTA';
     avsc.innerText='AVSC';
     avce.innerText='AVCE';
     quera.innerText='QUERATOMETRIA';
@@ -882,10 +882,10 @@ function createreceta(doc) {
     tr.appendChild(eje);
     tr.appendChild(add);
     tr.appendChild(diam);
-    tr.appendChild(altura);
+    tr.appendChild(quera);
     tr.appendChild(avsc);
     tr.appendChild(avce);
-    tr.appendChild(quera);
+    tr.appendChild(altura);
 
     tbody.appendChild(trod);
     tbody.appendChild(troi);
@@ -895,10 +895,10 @@ function createreceta(doc) {
     trod.appendChild(ejeod)
     trod.appendChild(addod)
     trod.appendChild(diamod)
-    trod.appendChild(alturaod)
+    trod.appendChild(queraod)
     trod.appendChild(avscod)
     trod.appendChild(avceod)
-    trod.appendChild(queraod)
+    trod.appendChild(alturaod)
 
     troi.appendChild(oi);
     troi.appendChild(sphoi);
@@ -906,10 +906,10 @@ function createreceta(doc) {
     troi.appendChild(ejeoi)
     troi.appendChild(addoi)
     troi.appendChild(diamoi)
-    troi.appendChild(alturaoi)
+    troi.appendChild(queraoi)
     troi.appendChild(avscoi)
     troi.appendChild(avceoi)
-    troi.appendChild(queraoi)
+    troi.appendChild(alturaoi)
 
     rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)
@@ -1132,12 +1132,12 @@ function crearcalendario () {
 };
 
 function sendmail() {
-    
+
     if (cliente.correo != ''){
         $("[data-dismiss=modal]").trigger({
             type: "click"
         });
-        
+
         smalltalk
             .prompt('Contactando a ' + cliente.nombre, 'Escribe tu mensaje', '', {
                 buttons: {
