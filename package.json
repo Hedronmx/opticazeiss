@@ -1,6 +1,6 @@
 {
   "name": "optica-zeiss",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Sistema de Clientes Optica Zeiss",
   "main": "main.js",
   "repository": "https://github.com/Hedronmx/opticazeiss",
