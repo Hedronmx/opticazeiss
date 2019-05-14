@@ -1,12 +1,8 @@
 // Modules to control application life and create native browser window
 const {
   app,
-  BrowserWindow,
-  Notification
+  BrowserWindow
 } = require('electron')
-
-app.setAppUserModelId("com.hedronmx.optica");
-app.setAsDefaultProtocolClient('optica-zeiss');
 
 const updater = require("electron-updater");
 const autoUpdater = updater.autoUpdater;
