@@ -109,8 +109,8 @@ function createreceta(doc) {
     let colimprimir = document.createElement('div')
     colimprimir.setAttribute('class','col-md-2')
 
-    let coleditar = document.createElement('div')
-    coleditar.setAttribute('class','col-md-2 offset-md-8')
+    let colborrar = document.createElement('div')
+    colborrar.setAttribute('class','col-md-2 offset-md-8')
 
     let thead = document.createElement('thead');
     let thempy = document.createElement('th');
@@ -126,8 +126,10 @@ function createreceta(doc) {
 
     let imprimir = document.createElement('button')
     let editar = document.createElement('button')
+    let borrar = document.createElement('button')
     let col = document.createElement('div');
     let pfecha = document.createElement('p');
+    let pnota = document.createElement('p');
 
     let tbody = document.createElement('tbody');
     let od = document.createElement('th');
@@ -164,6 +166,8 @@ function createreceta(doc) {
 
     col.setAttribute('class', 'col col-md-12');
     pfecha.innerText = doc.data().fecha
+    console.log(doc.data().fecha)
+    pnota.innerText = doc.data().nota
     destroy.setAttribute('id', doc.id)
 
     table.setAttribute('class', 'table table-striped');
@@ -252,16 +256,17 @@ function createreceta(doc) {
     rowbotones.setAttribute('data-html2canvas-ignore', 'true')
     imprimir.innerText="Imprimir"
 
-    editar.setAttribute('type','button')
-    editar.setAttribute('onClick',parameterborrar)
-    editar.setAttribute('class','btn btn-danger btn-sm')
-    editar.innerText="Borrar"
+    borrar.setAttribute('type','button')
+    borrar.setAttribute('onClick',parameterborrar)
+    borrar.setAttribute('class','btn btn-danger btn-sm')
+    borrar.innerText="Borrar"
     // imprimir.innerHTML = '<button type="button" onClick="imprimir(#'+doc.id+')" class="btn btn-primary btn-sm">Imprimir</button>'
 
 
     recetas.appendChild(destroy);
     destroy.appendChild(col);
     col.appendChild(pfecha);
+    col.appendChild(pnota);
     row.appendChild(table);
     destroy.appendChild(row);
 
@@ -304,10 +309,10 @@ function createreceta(doc) {
     troi.appendChild(avceoi)
     troi.appendChild(queraoi)
 
-    rowbotones.appendChild(coleditar)
+    rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)
     colimprimir.appendChild(imprimir)
-    coleditar.appendChild(editar)
+    colborrar.appendChild(borrar)
 
     destroy.appendChild(rowbotones)
     recetasloading = true;
@@ -477,7 +482,8 @@ forma.addEventListener('submit', (e) => {
             avceod: forma.avceod.value,
             avceoi: forma.avceoi.value,
             nota: forma.nota.value,
-            ultimacita: forma.ultimacita.value
+            ultimacita: forma.ultimacita.value,
+            fecha: forma.ultimacita.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -503,15 +509,16 @@ function cerrar() {
             cerrado = false;
             }
         })
-        
 
-    
+
+
     $$.single("#nombrecliente").setAttribute("value", cliente.nombre)
     $$.single("#telefonocliente").setAttribute("value", cliente.telefono)
     $$.single("#correocliente").setAttribute("value", cliente.correo)
     $$.single("#direccioncliente").setAttribute("value", cliente.direccion)
     $$.single("#ocupacioncliente").setAttribute("value", cliente.ocupacion)
     $$.single("#edadcliente").setAttribute("value", cliente.edad)
+    $$.single("#ultimacitaclientepicker").setAttribute("value", cliente.ultimacita)
     if (cliente.sexo == "Masculino") {
         $('#masculinocliente').prop('checked', true);
         $('#femeninocliente').prop('checked', false);
@@ -873,7 +880,8 @@ console.log(id)
             avscoi: receta.avscoireceta.value,
             avceod: receta.avceodreceta.value,
             avceoi: receta.avceoireceta.value,
-            fecha: id
+            nota: receta.notareceta.value,
+            fecha: receta.fechareceta.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -943,6 +951,7 @@ function rendercliente(id) {
                 avceod: doc.data().avceod,
                 avceoi: doc.data().avceoi,
                 previacita: doc.data().fecha,
+                ultimacita: doc.data().ultimacita,
                 nota: doc.data().nota,
                 ids: "Folio - " + id.substring(0, 4)
             };

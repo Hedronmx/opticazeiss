@@ -109,8 +109,8 @@ function createreceta(doc) {
     let colimprimir = document.createElement('div')
     colimprimir.setAttribute('class','col-md-2')
 
-    let coleditar = document.createElement('div')
-    coleditar.setAttribute('class','col-md-2 offset-md-8')
+    let colborrar = document.createElement('div')
+    colborrar.setAttribute('class','col-md-2 offset-md-8')
 
     let thead = document.createElement('thead');
     let thempy = document.createElement('th');
@@ -126,8 +126,10 @@ function createreceta(doc) {
 
     let imprimir = document.createElement('button')
     let editar = document.createElement('button')
+    let borrar = document.createElement('button')
     let col = document.createElement('div');
     let pfecha = document.createElement('p');
+    let pnota = document.createElement('p');
 
     let tbody = document.createElement('tbody');
     let od = document.createElement('th');
@@ -164,6 +166,7 @@ function createreceta(doc) {
 
     col.setAttribute('class', 'col col-md-12');
     pfecha.innerText = doc.data().fecha
+    pnota.innerText = doc.data().nota
     destroy.setAttribute('id', doc.id)
 
     table.setAttribute('class', 'table table-striped');
@@ -241,7 +244,6 @@ function createreceta(doc) {
     sphoi.innerText=doc.data().sphoi
 
     let parameter = "imprimirreceta('#"+doc.id+"')"
-    console.log(parameter)
 
     let parameterborrar = "borrarreceta('"+doc.id+"')"
 
@@ -252,16 +254,17 @@ function createreceta(doc) {
     rowbotones.setAttribute('data-html2canvas-ignore', 'true')
     imprimir.innerText="Imprimir"
 
-    editar.setAttribute('type','button')
-    editar.setAttribute('onClick',parameterborrar)
-    editar.setAttribute('class','btn btn-danger btn-sm')
-    editar.innerText="Borrar"
+    borrar.setAttribute('type','button')
+    borrar.setAttribute('onClick',parameterborrar)
+    borrar.setAttribute('class','btn btn-danger btn-sm')
+    borrar.innerText="Borrar"
     // imprimir.innerHTML = '<button type="button" onClick="imprimir(#'+doc.id+')" class="btn btn-primary btn-sm">Imprimir</button>'
 
 
     recetas.appendChild(destroy);
     destroy.appendChild(col);
     col.appendChild(pfecha);
+    col.appendChild(pnota);
     row.appendChild(table);
     destroy.appendChild(row);
 
@@ -304,10 +307,10 @@ function createreceta(doc) {
     troi.appendChild(avceoi)
     troi.appendChild(queraoi)
 
-    rowbotones.appendChild(coleditar)
+    rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)
     colimprimir.appendChild(imprimir)
-    coleditar.appendChild(editar)
+    colborrar.appendChild(borrar)
 
     destroy.appendChild(rowbotones)
     recetasloading = true;
@@ -478,7 +481,7 @@ forma.addEventListener('submit', (e) => {
             avceoi: forma.avceoi.value,
             nota: forma.nota.value,
             ultimacita: forma.ultimacita.value,
-            fecha: fecha.toDateString()
+            fecha: forma.ultimacita.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -504,15 +507,16 @@ function cerrar() {
             cerrado = false;
             }
         })
-        
 
-    
+
+
     $$.single("#nombrecliente").setAttribute("value", cliente.nombre)
     $$.single("#telefonocliente").setAttribute("value", cliente.telefono)
     $$.single("#correocliente").setAttribute("value", cliente.correo)
     $$.single("#direccioncliente").setAttribute("value", cliente.direccion)
     $$.single("#ocupacioncliente").setAttribute("value", cliente.ocupacion)
     $$.single("#edadcliente").setAttribute("value", cliente.edad)
+    $$.single("#ultimacitaclientepicker").setAttribute("value", cliente.ultimacita)
     if (cliente.sexo == "Masculino") {
         $('#masculinocliente').prop('checked', true);
         $('#femeninocliente').prop('checked', false);
@@ -521,49 +525,49 @@ function cerrar() {
         $('#masculinocliente').prop('checked', false);
     }
 
-    if (cliente.diabetes == "<i class='fa fa-check'></i>") {
+    if (cliente.diabetes == "Diabetes: <i class='fa fa-check'></i>") {
         $('#diabetescliente').prop('checked', true);
     } else {
         $('#diabetescliente').prop('checked', false);
     }
 
-    if (cliente.hipertension == "<i class='fa fa-check'></i>") {
+    if (cliente.hipertension == "Hipertensión: <i class='fa fa-check'></i>") {
         $('#hipertensioncliente').prop('checked', true);
     } else {
         $('#hipertensioncliente').prop('checked', false);
     }
 
-    if (cliente.sinusitis == "<i class='fa fa-check'></i>") {
+    if (cliente.sinusitis == "Sinusitis: <i class='fa fa-check'></i>") {
         $('#sinusitiscliente').prop('checked', true);
     } else {
         $('#sinusitiscliente').prop('checked', false);
     }
 
-    if (cliente.dolordecabeza == "<i class='fa fa-check'></i>") {
+    if (cliente.dolordecabeza == "Dolor de Cabeza: <i class='fa fa-check'></i>") {
         $('#dolordecabezacliente').prop('checked', true);
     } else {
         $('#dolordecabezacliente').prop('checked', false);
     }
 
-    if (cliente.alergias == "<i class='fa fa-check'></i>") {
+    if (cliente.alergias == "Alergias: <i class='fa fa-check'></i>") {
         $('#alergiascliente').prop('checked', true);
     } else {
         $('#alergiascliente').prop('checked', false);
     }
 
-    if (cliente.cataratas == "<i class='fa fa-check'></i>") {
+    if (cliente.cataratas == "Cataratas: <i class='fa fa-check'></i>") {
         $('#cataratascliente').prop('checked', true);
     } else {
         $('#cataratascliente').prop('checked', false);
     }
 
-    if (cliente.glaucoma == "<i class='fa fa-check'></i>") {
+    if (cliente.glaucoma == "Glaucoma: <i class='fa fa-check'></i>") {
         $('#glaucomacliente').prop('checked', true);
     } else {
         $('#glaucomacliente').prop('checked', false);
     }
 
-    if (cliente.ceguera == "<i class='fa fa-check'></i>") {
+    if (cliente.ceguera == "Ceguera: <i class='fa fa-check'></i>") {
         $('#cegueracliente').prop('checked', true);
     } else {
         $('#cegueracliente').prop('checked', false);
@@ -572,49 +576,49 @@ function cerrar() {
 
     $$.single("#otrocliente").setAttribute("value", cliente.otro)
 
-    if (cliente.dolorojos == "<i class='fa fa-check'></i>") {
+    if (cliente.dolorojos == "Dolor de Ojos: <i class='fa fa-check'></i>") {
         $('#dolorojoscliente').prop('checked', true);
     } else {
         $('#dolorojoscliente').prop('checked', false);
     }
 
-    if (cliente.ojosllorosos == "<i class='fa fa-check'></i>") {
+    if (cliente.ojosllorosos == "Ojos Llorosos: <i class='fa fa-check'></i>") {
         $('#ojosllorososcliente').prop('checked', true);
     } else {
         $('#ojosllorososcliente').prop('checked', false);
     }
 
-    if (cliente.comezon == "<i class='fa fa-check'></i>") {
+    if (cliente.comezon == "Comezón: <i class='fa fa-check'></i>") {
         $('#comezoncliente').prop('checked', true);
     } else {
         $('#comezoncliente').prop('checked', false);
     }
 
-    if (cliente.secresion == "<i class='fa fa-check'></i>") {
+    if (cliente.secresion == "Secresión: <i class='fa fa-check'></i>") {
         $('#secresioncliente').prop('checked', true);
     } else {
         $('#secresioncliente').prop('checked', false);
     }
 
-    if (cliente.traumatismo == "<i class='fa fa-check'></i>") {
+    if (cliente.traumatismo == "Traumatismo: <i class='fa fa-check'></i>") {
         $('#traumatismocliente').prop('checked', true);
     } else {
         $('#traumatismocliente').prop('checked', false);
     }
 
-    if (cliente.miodesopsia == "<i class='fa fa-check'></i>") {
+    if (cliente.miodesopsia == "Miodesopsia: <i class='fa fa-check'></i>") {
         $('#miodesopsiacliente').prop('checked', true);
     } else {
         $('#miodesopsiacliente').prop('checked', false);
     }
 
-    if (cliente.anillos == "<i class='fa fa-check'></i>") {
+    if (cliente.anillos == "Anillos o Halos: <i class='fa fa-check'></i>") {
         $('#anilloscliente').prop('checked', true);
     } else {
         $('#anilloscliente').prop('checked', false);
     }
 
-    if (cliente.hipersensibilidad == "<i class='fa fa-check'></i>") {
+    if (cliente.hipersensibilidad == "Hipersensibilidad Solar: <i class='fa fa-check'></i>") {
         $('#hipersensibilidadcliente').prop('checked', true);
     } else {
         $('#hipersensibilidadcliente').prop('checked', false);
@@ -659,14 +663,16 @@ function cerrar() {
 
     $$.single("#datepickercliente").setAttribute("value", cliente.proximacita)
 
-    $$.single("#notacliente").setAttribute("value", cliente.nota)
+    $$.single("#notacliente").innerText = cliente.nota
+    
 
 }
 
-
+var editarcerrado = false;
 
 editar.addEventListener('submit', (e) => {
     e.preventDefault();
+    editarcerrado = true;
     var diabetes;
     var hipertension;
     var sinusitis;
@@ -776,7 +782,7 @@ editar.addEventListener('submit', (e) => {
     }
 
     if (editar.anilloscliente.checked) {
-        anillos = foreditarma.anilloscliente.value
+        anillos = editar.anilloscliente.value
     } else {
         anillos = "Anillos o Halos:";
     }
@@ -803,7 +809,7 @@ editar.addEventListener('submit', (e) => {
             cataratas: cataratas,
             glaucoma: glaucoma,
             ceguera: ceguera,
-            otro: forma.otro.value,
+            otro: editar.otrocliente.value,
             dolorojos: dolorojos,
             ojosllorosos: ojosllorosos,
             comezon: comezon,
@@ -839,9 +845,13 @@ editar.addEventListener('submit', (e) => {
             editar.reset()
             $("#clienteactualizado").show(200);
             $("#clienteactualizado").hide(5500);
-            $("[data-dismiss=modal]").trigger({
-                type: "click"
-            });
+            $('.edit').modal('hide')
+                 $('.edit').on('hidden.bs.modal', function() {
+                     if (editarcerrado == true) {
+                     rendercliente(previd);
+                     editarcerrado = false;
+                     }
+                 })
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -874,7 +884,8 @@ console.log(id)
             avscoi: receta.avscoireceta.value,
             avceod: receta.avceodreceta.value,
             avceoi: receta.avceoireceta.value,
-            fecha: id
+            nota: receta.notareceta.value,
+            fecha: receta.fechareceta.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -944,6 +955,7 @@ function rendercliente(id) {
                 avceod: doc.data().avceod,
                 avceoi: doc.data().avceoi,
                 previacita: doc.data().fecha,
+                ultimacita: doc.data().ultimacita,
                 nota: doc.data().nota,
                 ids: "Folio - " + id.substring(0, 4)
             };
@@ -989,9 +1001,6 @@ function borrarcliente() {
 function borrarreceta(id) {
     if (confirm("¿Quieres borrar esta receta?")) {
         db.collection('clientes').doc(previd).collection('recetas').doc(id).delete();
-        $("[data-dismiss=modal]").trigger({
-            type: "click"
-        });
     }
 }
 
