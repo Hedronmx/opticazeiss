@@ -202,7 +202,7 @@
                    <input class="brd-rd5" type="text" min="-1000" step="0.001" name="avceod" placeholder="AVCE" />
                  </div>
                  <div class="col-md-3 col-sm-3 col-lg-3">
-                   <input class="brd-rd5" type="text" min="-1000" step="0.001" name="alturaod" placeholder="ALTURA" />
+                   <input class="brd-rd5" type="text" min="-1000" step="0.001" name="alturaod" placeholder="NOTA" />
                  </div>
                  
 
@@ -257,7 +257,7 @@
                </div>
              </div>
              <div class="col-md-12 col-sm-12 col-lg-12">
-               <button class="green-bg brd-rd5" id="registrar"><i class="fa fa-paper-plane"></i>Registrar</button>
+               <button class="green-bg brd-rd5" id="registrar"><i class="fa fa-check"></i>Registrar</button>
              </div>
          </div>
          </form>
@@ -484,7 +484,7 @@
              </div>
              <div class="row">
                <div class="col-md-12 col-sm-12 col-lg-12">
-                 <button class="green-bg brd-rd5" id="actualizarboton"><i class="fa fa-paper-plane"></i>Actualizar</button>
+                 <button class="green-bg brd-rd5" id="actualizarboton"><i class="fa fa-check"></i>Actualizar</button>
                </div>
              </div>
 
@@ -499,6 +499,116 @@
        </div>
      </div>
    </div>
+   
+   
+   <!--Editar Receta Modal -->
+   <div class="modal fade editreceta" tabindex="-1" aria-hidden="true">
+     <div class="modal-dialog modal-lg">
+       <div class="modal-content" style="padding:2%;">
+         <div class="modal-header">
+           <h4 class="modal-title">Actualizar Receta</h4>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+         </div>
+         <div class="modal-body">
+         
+         <div class="row">
+         
+           <form class="form-wrp" id="editformreceta">
+               <div class="row">
+                 <div class="col-md-12">
+                   <strong>Ojo Derecho</strong>
+                 </div>
+               </div>
+               <div class="row mrg20">
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="sphodeditreceta" min="-1000" step="0.001" placeholder="SPH" id="sphodeditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="cilodeditreceta" min="-1000" step="0.001" placeholder="CIL" id="cilodeditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="ejeodeditreceta" min="-1000" step="0.001" placeholder="EJE" id="ejeodeditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="addodeditreceta" min="-1000" step="0.001" placeholder="ADD" id="addodeditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="diamodeditreceta" min="-1000" step="0.001" placeholder="DIAM." id="diamodeditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="xeratometriaodeditreceta" min="-1000" step="0.001" placeholder="QUERATOMETRIA" id="xeratometriaodeditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="avscodeditreceta" min="-1000" step="0.001" placeholder="AVSC" id="avscodeditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="avceodeditreceta" min="-1000" step="0.001" placeholder="AVCE" id="avceodeditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="alturaodeditreceta" min="-1000" step="0.001" placeholder="NOTA" id="alturaodeditreceta" />
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-md-12">
+                   <strong>Ojo Izquierdo</strong>
+                 </div>
+               </div>
+               <div class="row mrg20">
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="sphoieditreceta" min="-1000" step="0.001" placeholder="SPH" id="sphoieditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="ciloieditreceta" min="-1000" step="0.001" placeholder="CIL" id="ciloieditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="ejeoieditreceta" min="-1000" step="0.001" placeholder="EJE" id="ejeoieditreceta" />
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-lg-3">
+                   <input class="brd-rd5" type="text" name="addoieditreceta" min="-1000" step="0.001" placeholder="ADD" id="addoieditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="diamoieditreceta" min="-1000" step="0.001" placeholder="DIAM." id="diamoieditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="xeratometriaoieditreceta" min="-1000" step="0.001" placeholder="QUERATOMETRIA" id="xeratometriaoieditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="avscoieditreceta" min="-1000" step="0.001" placeholder="AVSC" id="avscoieditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="avceoieditreceta" min="-1000" step="0.001" placeholder="AVCE" id="avceoieditreceta" />
+                 </div>
+                 <div class="col-md-4 col-sm-4 col-lg-4">
+                   <input class="brd-rd5" type="text" name="alturaoieditreceta" min="-1000" step="0.001" placeholder="NOTA" id="alturaoieditreceta" />
+                 </div>
+               </div>
+               <div class="row mrg20">
+                 <strong>Fecha de Receta</strong>
+                 <div class="col-md-12 col-sm-12 col-lg-12">
+                   <input class="brd-rd5" type="text" name="datepickereditreceta" id="datepickereditreceta">
+                 </div>
+               </div>
+               <div class="row mrg20">
+                 <div class="col col-md-12">
+                   <strong>Nota de Receta</strong>
+                   <textarea class="form-control rounded-0" name="notaeditreceta" placeholder="Escriba aqui" id="notaeditreceta" rows="10"></textarea>
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="offset-md-10 col-md-2">
+                 <button class="btn-success brd-rd5" id="actualizarboton"><i class="fa fa-check"></i>Actualizar</button>
+               </div>
+             </div>
+         </div>
+         </form>
+         
+         </div>
+         
+       </div>
+     </div>
+   </div>
+   
 
      <!--Render Cliente-->
      <div class="modal fade cliente" tabindex="-1" aria-hidden="true">
@@ -750,7 +860,7 @@
                    </div>
                    <div class="row">
                      <div class="col-md-12 col-sm-12 col-lg-12">
-                       <button class="green-bg brd-rd5" style="margin-bottom:32px">Guardar Receta</button>
+                       <button class="green-bg brd-rd5" style="margin-bottom:32px"><i class="fa fa-check"></i>Guardar Receta</button>
                      </div>
                    </div>
  
@@ -813,7 +923,7 @@
                          </div>
                          <div class="row mrg20">
                              <div class="col-md-12 col-sm-12 col-lg-12">
-                                <button class="green-bg brd-rd5" style="margin-bottom:32px">Guardar Cita</button>
+                                <button class="green-bg brd-rd5" style="margin-bottom:32px"><i class="fa fa-check"></i>Guardar Cita</button>
                             </div>
                             <div class="alert alert-success" id="citaok" role="alert">
                                 ¡Cliente Actualizado!
@@ -889,18 +999,19 @@
     <script src="js/main.js" type="text/javascript"></script>
         <script>
              $(function() {
-                 $("#datepicker").datepicker();
-                 $("#datepickercliente").datepicker();
-                 $("#datepickercita").datepicker();
-                 $("#ultimacitapicker").datepicker();
-                 $("#ultimacitaclientepicker").datepicker();
+                 $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+                 $("#datepickercliente").datepicker({ dateFormat: 'dd/mm/yy' });
+                 $("#datepickercita").datepicker({ dateFormat: 'dd/mm/yy' });
+                 $("#ultimacitapicker").datepicker( {dateFormat: 'dd/mm/yy' });
+                 $("#ultimacitaclientepicker").datepicker({ dateFormat: 'dd/mm/yy' });
                  $("#clienteregistrado").hide();
                  $("#alertaerror").hide();
                  $("#clienteactualizado").hide();
                  $("#actualizarerror").hide();
                  $("#pdfguardado").hide();
                  $("#citaok").hide();
-                 $("#datepickerreceta").datepicker();
+                 $("#datepickerreceta").datepicker({dateFormat: 'dd/mm/yy' });
+                 $("#datepickereditreceta").datepicker({ dateFormat: 'dd/mm/yy' });
              });
          </script>
 </body>

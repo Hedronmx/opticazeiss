@@ -45,41 +45,40 @@ function collect (){
 	        if (change.type == 'added') {
 	                var cal ={}
 	                var cal2 = {}
-	                
+
 	                if (change.doc.data().proximacita != ''){
 	                    cal.start=change.doc.data().proximacita
 	                } else {
 	                    cal.start = '1/1/1990'
 	                }
-    	            
+
     	            if (change.doc.data().proximacita != ''){
 	                    cal.end = change.doc.data().proximacita
 	                } else {
 	                    cal.end = '1/1/1990'
 	                }
-	                
-	                
+
+
 	                if (change.doc.data().nuevafecha != undefined){
-	                    console.log(change.doc.data().nuevafecha)
 	                    cal2.start=change.doc.data().nuevafecha
 	                    cal2.title=change.doc.data().nombre
         	            cal2.id=change.doc.id
 	                } else {
 	                    cal2.start = '1/1/1990'
 	                }
-    	            
+
     	            if (change.doc.data().nuevafecha != ''){
 	                    cal2.end = change.doc.data().nuevafecha
 	                } else {
 	                    cal2.end = '1/1/1990'
 	                }
-    	            
+
     	            crearlista(change.doc)
-    	            
+
     	            cal.title=change.doc.data().nombre
     	            cal.id=change.doc.id
-    	            
-    	            
+
+
     	            if( cal2 === undefined || cal2.length == 0 ){
     	                eventos.push(cal)
     	            } else {
@@ -102,23 +101,23 @@ function collect (){
 	            index = eventos.findIndex(x => x.id === change.doc.id);
 	            console.log(index)
 	            eventos.splice(index, 1);
-                
+
                 var cal ={}
                 var cal2 = {}
-                
+
                 if (change.doc.data().proximacita != ''){
                     cal.start=change.doc.data().proximacita
                 } else {
                     cal.start = '1/1/1990'
                 }
-	            
+
 	            if (change.doc.data().proximacita != ''){
                     cal.end = change.doc.data().proximacita
                 } else {
                     cal.end = '1/1/1990'
                 }
-                
-                
+
+
                 if (change.doc.data().nuevafecha != undefined){
                     console.log(change.doc.data().nuevafecha)
                     cal2.start=change.doc.data().nuevafecha
@@ -127,24 +126,24 @@ function collect (){
                 } else {
                     cal2.start = '1/1/1990'
                 }
-	            
+
 	            if (change.doc.data().nuevafecha != ''){
                     cal2.end = change.doc.data().nuevafecha
                 } else {
                     cal2.end = '1/1/1990'
                 }
-	            
+
 	            cal.title=change.doc.data().nombre
 	            cal.id=change.doc.id
-	            
-	            
+
+
 	            if( cal2 === undefined || cal2.length == 0 ){
 	                eventos.push(cal)
 	            } else {
 	                eventos.push(cal)
 	                eventos.push(cal2)
 	            }
-	            
+
 	            $('#calendar').fullCalendar('removeEvents');
                 $('#calendar').fullCalendar('addEventSource', eventos);
                 $('#calendar').fullCalendar('rerenderEvents');
@@ -256,12 +255,14 @@ function cerrar() {
         })
 
 
+
     $$.single("#nombrecliente").setAttribute("value", cliente.nombre)
     $$.single("#telefonocliente").setAttribute("value", cliente.telefono)
     $$.single("#correocliente").setAttribute("value", cliente.correo)
     $$.single("#direccioncliente").setAttribute("value", cliente.direccion)
     $$.single("#ocupacioncliente").setAttribute("value", cliente.ocupacion)
     $$.single("#edadcliente").setAttribute("value", cliente.edad)
+    $$.single("#ultimacitaclientepicker").setAttribute("value", cliente.ultimacita)
     if (cliente.sexo == "Masculino") {
         $('#masculinocliente').prop('checked', true);
         $('#femeninocliente').prop('checked', false);
@@ -270,49 +271,49 @@ function cerrar() {
         $('#masculinocliente').prop('checked', false);
     }
 
-    if (cliente.diabetes == "<i class='fa fa-check'></i>") {
+    if (cliente.diabetes == "Diabetes: <i class='fa fa-check'></i>") {
         $('#diabetescliente').prop('checked', true);
     } else {
         $('#diabetescliente').prop('checked', false);
     }
 
-    if (cliente.hipertension == "<i class='fa fa-check'></i>") {
+    if (cliente.hipertension == "Hipertensión: <i class='fa fa-check'></i>") {
         $('#hipertensioncliente').prop('checked', true);
     } else {
         $('#hipertensioncliente').prop('checked', false);
     }
 
-    if (cliente.sinusitis == "<i class='fa fa-check'></i>") {
+    if (cliente.sinusitis == "Sinusitis: <i class='fa fa-check'></i>") {
         $('#sinusitiscliente').prop('checked', true);
     } else {
         $('#sinusitiscliente').prop('checked', false);
     }
 
-    if (cliente.dolordecabeza == "<i class='fa fa-check'></i>") {
+    if (cliente.dolordecabeza == "Dolor de Cabeza: <i class='fa fa-check'></i>") {
         $('#dolordecabezacliente').prop('checked', true);
     } else {
         $('#dolordecabezacliente').prop('checked', false);
     }
 
-    if (cliente.alergias == "<i class='fa fa-check'></i>") {
+    if (cliente.alergias == "Alergias: <i class='fa fa-check'></i>") {
         $('#alergiascliente').prop('checked', true);
     } else {
         $('#alergiascliente').prop('checked', false);
     }
 
-    if (cliente.cataratas == "<i class='fa fa-check'></i>") {
+    if (cliente.cataratas == "Cataratas: <i class='fa fa-check'></i>") {
         $('#cataratascliente').prop('checked', true);
     } else {
         $('#cataratascliente').prop('checked', false);
     }
 
-    if (cliente.glaucoma == "<i class='fa fa-check'></i>") {
+    if (cliente.glaucoma == "Glaucoma: <i class='fa fa-check'></i>") {
         $('#glaucomacliente').prop('checked', true);
     } else {
         $('#glaucomacliente').prop('checked', false);
     }
 
-    if (cliente.ceguera == "<i class='fa fa-check'></i>") {
+    if (cliente.ceguera == "Ceguera: <i class='fa fa-check'></i>") {
         $('#cegueracliente').prop('checked', true);
     } else {
         $('#cegueracliente').prop('checked', false);
@@ -321,49 +322,49 @@ function cerrar() {
 
     $$.single("#otrocliente").setAttribute("value", cliente.otro)
 
-    if (cliente.dolorojos == "<i class='fa fa-check'></i>") {
+    if (cliente.dolorojos == "Dolor de Ojos: <i class='fa fa-check'></i>") {
         $('#dolorojoscliente').prop('checked', true);
     } else {
         $('#dolorojoscliente').prop('checked', false);
     }
 
-    if (cliente.ojosllorosos == "<i class='fa fa-check'></i>") {
+    if (cliente.ojosllorosos == "Ojos Llorosos: <i class='fa fa-check'></i>") {
         $('#ojosllorososcliente').prop('checked', true);
     } else {
         $('#ojosllorososcliente').prop('checked', false);
     }
 
-    if (cliente.comezon == "<i class='fa fa-check'></i>") {
+    if (cliente.comezon == "Comezón: <i class='fa fa-check'></i>") {
         $('#comezoncliente').prop('checked', true);
     } else {
         $('#comezoncliente').prop('checked', false);
     }
 
-    if (cliente.secresion == "<i class='fa fa-check'></i>") {
+    if (cliente.secresion == "Secresión: <i class='fa fa-check'></i>") {
         $('#secresioncliente').prop('checked', true);
     } else {
         $('#secresioncliente').prop('checked', false);
     }
 
-    if (cliente.traumatismo == "<i class='fa fa-check'></i>") {
+    if (cliente.traumatismo == "Traumatismo: <i class='fa fa-check'></i>") {
         $('#traumatismocliente').prop('checked', true);
     } else {
         $('#traumatismocliente').prop('checked', false);
     }
 
-    if (cliente.miodesopsia == "<i class='fa fa-check'></i>") {
+    if (cliente.miodesopsia == "Miodesopsia: <i class='fa fa-check'></i>") {
         $('#miodesopsiacliente').prop('checked', true);
     } else {
         $('#miodesopsiacliente').prop('checked', false);
     }
 
-    if (cliente.anillos == "<i class='fa fa-check'></i>") {
+    if (cliente.anillos == "Anillos o Halos: <i class='fa fa-check'></i>") {
         $('#anilloscliente').prop('checked', true);
     } else {
         $('#anilloscliente').prop('checked', false);
     }
 
-    if (cliente.hipersensibilidad == "<i class='fa fa-check'></i>") {
+    if (cliente.hipersensibilidad == "Hipersensibilidad Solar: <i class='fa fa-check'></i>") {
         $('#hipersensibilidadcliente').prop('checked', true);
     } else {
         $('#hipersensibilidadcliente').prop('checked', false);
@@ -408,12 +409,17 @@ function cerrar() {
 
     $$.single("#datepickercliente").setAttribute("value", cliente.proximacita)
 
-    $$.single("#notacliente").setAttribute("value", cliente.nota)
+    $$.single("#notacliente").innerText = cliente.nota
+
 
 }
 
+
+var editarcerrado = false;
+
 editar.addEventListener('submit', (e) => {
     e.preventDefault();
+    editarcerrado = true;
     var diabetes;
     var hipertension;
     var sinusitis;
@@ -523,7 +529,7 @@ editar.addEventListener('submit', (e) => {
     }
 
     if (editar.anilloscliente.checked) {
-        anillos = foreditarma.anilloscliente.value
+        anillos = editar.anilloscliente.value
     } else {
         anillos = "Anillos o Halos:";
     }
@@ -550,7 +556,7 @@ editar.addEventListener('submit', (e) => {
             cataratas: cataratas,
             glaucoma: glaucoma,
             ceguera: ceguera,
-            otro: forma.otro.value,
+            otro: editar.otrocliente.value,
             dolorojos: dolorojos,
             ojosllorosos: ojosllorosos,
             comezon: comezon,
@@ -579,16 +585,20 @@ editar.addEventListener('submit', (e) => {
             avceoi: editar.avceoicliente.value,
             proximacita: editar.proximacitacliente.value,
             nota: editar.notacliente.value,
-            ultimacita: editar.ultimacitacliente.value
+            ultimacita: editar.ultimacitacliente.value,
         })
         .then(function() {
             console.log("Document successfully written!");
             editar.reset()
             $("#clienteactualizado").show(200);
             $("#clienteactualizado").hide(5500);
-            $("[data-dismiss=modal]").trigger({
-                type: "click"
-            });
+            $('.edit').modal('hide')
+                 $('.edit').on('hidden.bs.modal', function() {
+                     if (editarcerrado == true) {
+                     rendercliente(previd);
+                     editarcerrado = false;
+                     }
+                 })
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -602,7 +612,7 @@ receta.addEventListener('submit', (e) => {
     e.preventDefault();
 var fecha = new Date();
 id = fecha.toDateString()
-console.log(id)
+
     db.collection('clientes').doc(previd).collection('recetas').add({
             sphod: receta.sphodreceta.value,
             cilod: receta.cilodreceta.value,
@@ -622,7 +632,8 @@ console.log(id)
             avscoi: receta.avscoireceta.value,
             avceod: receta.avceodreceta.value,
             avceoi: receta.avceoireceta.value,
-            fecha: id
+            nota: receta.notareceta.value,
+            fecha: receta.fechareceta.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -639,7 +650,7 @@ console.log(id)
 
 function nuevacita(){
     $('.nuevacita').modal('show');
-    
+
 }
 
 const ul = document.querySelector('#clientesselect')
@@ -666,8 +677,8 @@ function guardarcita(id){
 formanuevacita.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(formanuevacita.nuevafecha.value)
-    
-    
+
+
     db.collection('clientes').doc(idcita).update({
             nuevafecha:formanuevacita.nuevafecha.value
         })
@@ -680,8 +691,8 @@ formanuevacita.addEventListener('submit', (e) => {
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
-    
-    
+
+
 });
 
 
@@ -702,8 +713,8 @@ function createreceta(doc) {
     let colimprimir = document.createElement('div')
     colimprimir.setAttribute('class','col-md-2')
 
-    let coleditar = document.createElement('div')
-    coleditar.setAttribute('class','col-md-2 offset-md-8')
+    let colborrar = document.createElement('div')
+    colborrar.setAttribute('class','col-md-2 offset-md-8')
 
     let thead = document.createElement('thead');
     let thempy = document.createElement('th');
@@ -719,8 +730,10 @@ function createreceta(doc) {
 
     let imprimir = document.createElement('button')
     let editar = document.createElement('button')
+    let borrar = document.createElement('button')
     let col = document.createElement('div');
     let pfecha = document.createElement('p');
+    let pnota = document.createElement('p');
 
     let tbody = document.createElement('tbody');
     let od = document.createElement('th');
@@ -757,6 +770,7 @@ function createreceta(doc) {
 
     col.setAttribute('class', 'col col-md-12');
     pfecha.innerText = doc.data().fecha
+    pnota.innerText = doc.data().nota
     destroy.setAttribute('id', doc.id)
 
     table.setAttribute('class', 'table table-striped');
@@ -767,7 +781,7 @@ function createreceta(doc) {
     eje.innerText='EJE';
     add.innerText='ADD';
     diam.innerText='DIAM';
-    altura.innerText='ALTURA';
+    altura.innerText='NOTA';
     avsc.innerText='AVSC';
     avce.innerText='AVCE';
     quera.innerText='QUERATOMETRIA';
@@ -834,8 +848,7 @@ function createreceta(doc) {
     sphoi.innerText=doc.data().sphoi
 
     let parameter = "imprimirreceta('#"+doc.id+"')"
-    console.log(parameter)
-    
+
     let parameterborrar = "borrarreceta('"+doc.id+"')"
 
     rowbotones.setAttribute('style','margin-bottom:32px')
@@ -845,16 +858,17 @@ function createreceta(doc) {
     rowbotones.setAttribute('data-html2canvas-ignore', 'true')
     imprimir.innerText="Imprimir"
 
-    editar.setAttribute('type','button')
-    editar.setAttribute('onClick',parameterborrar)
-    editar.setAttribute('class','btn btn-danger btn-sm')
-    editar.innerText="Borrar"
+    borrar.setAttribute('type','button')
+    borrar.setAttribute('onClick',parameterborrar)
+    borrar.setAttribute('class','btn btn-danger btn-sm')
+    borrar.innerText="Borrar"
     // imprimir.innerHTML = '<button type="button" onClick="imprimir(#'+doc.id+')" class="btn btn-primary btn-sm">Imprimir</button>'
 
 
     recetas.appendChild(destroy);
     destroy.appendChild(col);
     col.appendChild(pfecha);
+    col.appendChild(pnota);
     row.appendChild(table);
     destroy.appendChild(row);
 
@@ -868,10 +882,10 @@ function createreceta(doc) {
     tr.appendChild(eje);
     tr.appendChild(add);
     tr.appendChild(diam);
-    tr.appendChild(altura);
+    tr.appendChild(quera);
     tr.appendChild(avsc);
     tr.appendChild(avce);
-    tr.appendChild(quera);
+    tr.appendChild(altura);
 
     tbody.appendChild(trod);
     tbody.appendChild(troi);
@@ -881,10 +895,10 @@ function createreceta(doc) {
     trod.appendChild(ejeod)
     trod.appendChild(addod)
     trod.appendChild(diamod)
-    trod.appendChild(alturaod)
+    trod.appendChild(queraod)
     trod.appendChild(avscod)
     trod.appendChild(avceod)
-    trod.appendChild(queraod)
+    trod.appendChild(alturaod)
 
     troi.appendChild(oi);
     troi.appendChild(sphoi);
@@ -892,19 +906,19 @@ function createreceta(doc) {
     troi.appendChild(ejeoi)
     troi.appendChild(addoi)
     troi.appendChild(diamoi)
-    troi.appendChild(alturaoi)
+    troi.appendChild(queraoi)
     troi.appendChild(avscoi)
     troi.appendChild(avceoi)
-    troi.appendChild(queraoi)
-    
-    rowbotones.appendChild(coleditar)
+    troi.appendChild(alturaoi)
+
+    rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)
     colimprimir.appendChild(imprimir)
-    coleditar.appendChild(editar)
-    
-    destroy.appendChild(rowbotones)
-}
+    colborrar.appendChild(borrar)
 
+    destroy.appendChild(rowbotones)
+    recetasloading = true;
+}
 
 forma.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -1063,13 +1077,14 @@ forma.addEventListener('submit', (e) => {
             diamoi: forma.diamoi.value,
             alturaoi: forma.alturaoi.value,
             xeratometriaoi: forma.xeratometriaoi.value,
-            ultimacita: forma.proximacita.value,
+            proximacita: forma.proximacita.value,
             avscod: forma.avscod.value,
             avscoi: forma.avscoi.value,
             avceod: forma.avceod.value,
             avceoi: forma.avceoi.value,
             nota: forma.nota.value,
-            fecha: fecha.toDateString()
+            ultimacita: forma.ultimacita.value,
+            fecha: forma.ultimacita.value
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -1117,12 +1132,12 @@ function crearcalendario () {
 };
 
 function sendmail() {
-    
+
     if (cliente.correo != ''){
         $("[data-dismiss=modal]").trigger({
             type: "click"
         });
-        
+
         smalltalk
             .prompt('Contactando a ' + cliente.nombre, 'Escribe tu mensaje', '', {
                 buttons: {
@@ -1201,9 +1216,6 @@ function borrarcliente() {
 function borrarreceta(id) {
     if (confirm("¿Quieres borrar esta receta?")) {
         db.collection('clientes').doc(previd).collection('recetas').doc(id).delete();
-        $("[data-dismiss=modal]").trigger({
-            type: "click"
-        });
     }
 }
 

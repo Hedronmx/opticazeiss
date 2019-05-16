@@ -31,6 +31,9 @@ const recetas = document.querySelector('#recetas')
 const clienteview = document.querySelector('#impresion')
 
 const editar = document.querySelector('#editarcliente')
+
+const editformreceta = document.querySelector('#editformreceta')
+
 var folio = 1;
 var cliente = {};
 var previd = null;
@@ -110,7 +113,11 @@ function createreceta(doc) {
     colimprimir.setAttribute('class','col-md-2')
 
     let colborrar = document.createElement('div')
-    colborrar.setAttribute('class','col-md-2 offset-md-8')
+    colborrar.setAttribute('class','col-md-2 offset-md-6')
+    
+    
+    let coleditar = document.createElement('div')
+    coleditar.setAttribute('class','col-md-2')
 
     let thead = document.createElement('thead');
     let thempy = document.createElement('th');
@@ -246,6 +253,8 @@ function createreceta(doc) {
     let parameter = "imprimirreceta('#"+doc.id+"')"
 
     let parameterborrar = "borrarreceta('"+doc.id+"')"
+    
+    let parametereditar = "editarreceta('"+doc.id+"')"
 
     rowbotones.setAttribute('style','margin-bottom:32px')
     imprimir.setAttribute('type','button')
@@ -258,6 +267,11 @@ function createreceta(doc) {
     borrar.setAttribute('onClick',parameterborrar)
     borrar.setAttribute('class','btn btn-danger btn-sm')
     borrar.innerText="Borrar"
+    
+    editar.setAttribute('type','button')
+    editar.setAttribute('onClick',parametereditar)
+    editar.setAttribute('class','btn btn-success btn-sm')
+    editar.innerText="Editar"
     // imprimir.innerHTML = '<button type="button" onClick="imprimir(#'+doc.id+')" class="btn btn-primary btn-sm">Imprimir</button>'
 
 
@@ -309,12 +323,127 @@ function createreceta(doc) {
 
     rowbotones.appendChild(colborrar)
     rowbotones.appendChild(colimprimir)
+    rowbotones.appendChild(coleditar)
     colimprimir.appendChild(imprimir)
+    coleditar.appendChild(editar)
     colborrar.appendChild(borrar)
 
     destroy.appendChild(rowbotones)
     recetasloading = true;
 }
+
+var editareceta = false;
+var recetaid = null;
+
+function editarreceta (id){
+    recetaid = id;
+    console.log(recetaid)
+    
+    db.collection('clientes').doc(previd).collection("recetas").doc(id).get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+        $$.single("#sphodeditreceta").setAttribute("value", doc.data().sphod )
+    
+        $$.single("#cilodeditreceta").setAttribute("value", doc.data().cilod )
+    
+        $$.single("#ejeodeditreceta").setAttribute("value", doc.data().ejeod)
+    
+        $$.single("#addodeditreceta").setAttribute("value", doc.data().addod)
+    
+        $$.single("#diamodeditreceta").setAttribute("value", doc.data().diamod)
+    
+        $$.single("#alturaodeditreceta").setAttribute("value", doc.data().alturaod)
+    
+        $$.single("#xeratometriaodeditreceta").setAttribute("value", doc.data().xeratometriaod)
+    
+    
+        $$.single("#sphoieditreceta").setAttribute("value", doc.data().sphoi)
+    
+        $$.single("#ciloieditreceta").setAttribute("value", doc.data().ciloi)
+    
+        $$.single("#ejeoieditreceta").setAttribute("value", doc.data().ejeoi)
+    
+        $$.single("#addoieditreceta").setAttribute("value", doc.data().addoi)
+    
+        $$.single("#diamoieditreceta").setAttribute("value", doc.data().diamoi)
+    
+        $$.single("#alturaoieditreceta").setAttribute("value", doc.data().alturaoi)
+    
+        $$.single("#xeratometriaoieditreceta").setAttribute("value", doc.data().xeratometriaoi)
+    
+        $$.single("#avscodeditreceta").setAttribute("value", doc.data().avscod)
+    
+        $$.single("#avscoieditreceta").setAttribute("value", doc.data().avscoi)
+    
+        $$.single("#avceodeditreceta").setAttribute("value", doc.data().avceod)
+    
+        $$.single("#avceoieditreceta").setAttribute("value", doc.data().avceoi)
+    
+        $$.single("#datepickereditreceta").setAttribute("value", doc.data().fecha)
+    
+        $$.single("#notaeditreceta").innerText = doc.data().nota
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+
+    
+    editareceta = true;
+        
+         $('.cliente').modal('hide')
+             $('.cliente').on('hidden.bs.modal', function() {
+                 if (editareceta == true) {
+                 $('.editreceta').modal('show')
+                 editareceta = false;
+                 }
+             })
+}
+
+editformreceta.addEventListener('submit', (e) => {
+    e.preventDefault();
+    editareceta = true;
+
+    db.collection('clientes').doc(previd).collection("recetas").doc(recetaid).update({
+            sphod: editformreceta.sphodeditreceta.value,
+            cilod: editformreceta.cilodeditreceta.value,
+            ejeod: editformreceta.ejeodeditreceta.value,
+            addod: editformreceta.addodeditreceta.value,
+            diamod: editformreceta.diamodeditreceta.value,
+            alturaod: editformreceta.alturaodeditreceta.value,
+            xeratometriaod: editformreceta.xeratometriaodeditreceta.value,
+            sphoi: editformreceta.sphoieditreceta.value,
+            ciloi: editformreceta.ciloieditreceta.value,
+            ejeoi: editformreceta.ejeoieditreceta.value,
+            addoi: editformreceta.addoieditreceta.value,
+            diamoi: editformreceta.diamoieditreceta.value,
+            alturaoi: editformreceta.alturaoieditreceta.value,
+            xeratometriaoi: editformreceta.xeratometriaoieditreceta.value,
+            avscod: editformreceta.avscodeditreceta.value,
+            avscoi: editformreceta.avscoieditreceta.value,
+            avceod: editformreceta.avceodeditreceta.value,
+            avceoi: editformreceta.avceoieditreceta.value,
+            nota: editformreceta.notaeditreceta.value,
+            fecha: editformreceta.datepickereditreceta.value,
+        })
+        .then(function() {
+            console.log("Document successfully written!");
+            $('.editreceta').modal('hide')
+                 $('.editreceta').on('hidden.bs.modal', function() {
+                     if (editareceta == true) {
+                     rendercliente(previd);
+                     editareceta = false;
+                     }
+                 })
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+            $("#actualizarerror").show(200);
+            $("#actualizarerror").hide(5500);
+        });
+})
 
 
 forma.addEventListener('submit', (e) => {
@@ -507,7 +636,6 @@ function cerrar() {
             cerrado = false;
             }
         })
-
 
 
     $$.single("#nombrecliente").setAttribute("value", cliente.nombre)
