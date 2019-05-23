@@ -10,7 +10,7 @@ app.setAsDefaultProtocolClient('optica-zeiss');
 
 const updater = require("electron-updater");
 const autoUpdater = updater.autoUpdater;
-
+const ipc = require('electron').ipcMain
 
 
 autoUpdater.checkForUpdatesAndNotify()
@@ -25,15 +25,19 @@ function sendStatusToWindow(message) {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1400,
     height: 900,
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
+      plugins: true,
+      preload: 'pdf.js'
     }
   })
+
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -48,6 +52,7 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+  
 }
 
 // This method will be called when Electron has finished
@@ -67,6 +72,12 @@ app.on('activate', function() {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
 })
+
+ipc.on('close', function () {
+  mainWindow.destroy
+  console.log("test")
+})
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
