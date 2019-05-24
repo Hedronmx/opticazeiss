@@ -182,7 +182,6 @@ function modal(id){
                 cataratas: doc.data().cataratas,
                 glaucoma: doc.data().glaucoma,
                 ceguera: doc.data().ceguera,
-                carnosidad: doc.data().carnosidad,
                 otro: doc.data().otro,
                 dolorojos: doc.data().dolorojos,
                 ojosllorosos: doc.data().ojosllorosos,
@@ -278,12 +277,6 @@ function cerrar() {
         $('#diabetescliente').prop('checked', true);
     } else {
         $('#diabetescliente').prop('checked', false);
-    }
-    
-    if (cliente.carnosidad == "Carnosidad: <i class='fa fa-check'></i>") {
-        $('#carnosidadcliente').prop('checked', true);
-    } else {
-        $('#carnosidadcliente').prop('checked', false);
     }
 
     if (cliente.hipertension == "Hipertensión: <i class='fa fa-check'></i>") {
@@ -445,7 +438,6 @@ editar.addEventListener('submit', (e) => {
     var miodesopsia;
     var anillos;
     var hipersensibilidad;
-    var carnosidad;
 
     var fechanueva = new Date();
 
@@ -463,12 +455,6 @@ editar.addEventListener('submit', (e) => {
         hipertension = editar.hipertensioncliente.value
     } else {
         hipertension = "Hipertensión:";
-    }
-    
-    if (editar.carnosidadcliente.checked) {
-        carnosidad = editar.carnosidadcliente.value
-    } else {
-        carnosidad = "Carnosidad:";
     }
 
     if (editar.sinusitiscliente.checked) {
@@ -592,7 +578,6 @@ editar.addEventListener('submit', (e) => {
             ciloi: editar.ciloicliente.value,
             ejeoi: editar.ejeoicliente.value,
             addoi: editar.addoicliente.value,
-            carnosidad: editar.carnosidad.value,
             diamoi: editar.diamoicliente.value,
             alturaoi: editar.alturaoicliente.value,
             xeratometriaoi: editar.xeratometriaoicliente.value,
@@ -1085,7 +1070,6 @@ forma.addEventListener('submit', (e) => {
     var miodesopsia;
     var anillos;
     var hipersensibilidad;
-    var carnosidad;
 
 
     if (forma.diabetes.checked) {
@@ -1098,12 +1082,6 @@ forma.addEventListener('submit', (e) => {
         hipertension = forma.hipertension.value
     } else {
         hipertension = "Hipertensión:";
-    }
-    
-    if (forma.carnosidad.checked) {
-        carnosidad = forma.carnosidad.value
-    } else {
-        carnosidad = "Carnosidad:";
     }
 
     if (forma.sinusitis.checked) {
@@ -1213,7 +1191,6 @@ forma.addEventListener('submit', (e) => {
             comezon: comezon,
             secresion: secresion,
             traumatismo: traumatismo,
-            carnosidad: carnosidad,
             miodesopsia: miodesopsia,
             anillos: anillos,
             hipersensibilidad: hipersensibilidad,
@@ -1266,7 +1243,6 @@ function crearcalendario () {
      //===== Full Calendar =====//
      if ($.isFunction($.fn.fullCalendar)) {
          $('#calendar').fullCalendar({
-         locale: 'es',
              header: {
                  left: 'prev',
                  center: 'title',
@@ -1274,7 +1250,7 @@ function crearcalendario () {
              },
              height: 530,
              displayEventTime: false,
-             defaultDate: fecha.toLocaleDateString(),
+             defaultDate: fecha.toDateString(),
              editable: true,
              eventLimit: false,
              eventClick: function(info) {
@@ -1283,8 +1259,7 @@ function crearcalendario () {
              events: eventos
          });
      }
-     
-     moment().format('YYYY-MM-DD')
+
 };
 
 function sendmail() {
@@ -1324,19 +1299,16 @@ function sendmail() {
 
 function imprimir(id) {
     const filename = cliente.nombre + '-' + previd.substring(0, 4) + '.pdf';
-    let pdf = new jsPDF('1', 'mm', 'letter');
+    var height = $(id).height();
+    var width = $(id).width();
 
     html2canvas(document.querySelector(id), {
         scale: 1
     }).then(canvas => {
+        let pdf = new jsPDF('1', 'mm', 'letter');
         pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 8,195,265);
-        // pdf.save(filename);
-        pdf.autoPrint();
-        var url = pdf.output('bloburl')
-        localStorage.setItem("storageName",url);
-        window.open(url,"Pdf", "nodeIntegration=yes" );
+        pdf.save(filename);
     });
-
 
     $("#pdfguardado").show(2000);
     $("#pdfguardado").hide(4000);
@@ -1345,6 +1317,10 @@ function imprimir(id) {
 function imprimirreceta(id) {
     console.log(id)
     const filename = cliente.nombre + '- receta - ' + previd.substring(0, 4) + '.pdf';
+    var height = $(id).height();
+    var width = $(id).width();
+    height -= height *0.38
+    width -= width *0.19
 
     html2canvas(document.querySelector(id), {
         scale: 1

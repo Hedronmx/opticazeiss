@@ -14,7 +14,6 @@
    <link rel="stylesheet" href="css/main.css" type="text/css">
    <link rel="stylesheet" href="css/responsive.css" type="text/css">
    <link rel="stylesheet" href="css/bootstrap-select.css" type="text/css">
-   <link rel="stylesheet" href="css/override.css" type="text/css">
    <!-- Color Scheme -->
    <link rel="stylesheet" href="css/color-schemes/color.css" type="text/css" title="color3">
    <link rel="alternate stylesheet" href="css/color-schemes/color1.css" title="color1">
@@ -172,10 +171,6 @@
                    <span class="chbx">
                      <input type="checkbox" name="hipersensibilidad" value="Hipersensibilidad Solar: <i class='fa fa-check'></i>" id="hipersensibilidad" />
                      <label for="hipersensibilidad">Hipersensibilidad Solar</label>
-                   </span>
-                   <span class="chbx">
-                     <input type="checkbox" name="carnosidad" value="Carnosidad: <i class='fa fa-check'></i>" id="carnosidad" />
-                     <label for="carnosidad">Carnosidad</label>
                    </span>
                  </div>
                </div>
@@ -397,10 +392,6 @@
                    <span class="chbx">
                      <input type="checkbox" name="hipersensibilidadcliente" value="Hipersensibilidad Solar: <i class='fa fa-check'></i>" id="hipersensibilidadcliente" />
                      <label for="hipersensibilidadcliente">Hipersensibilidad Solar</label>
-                   </span>
-                   <span class="chbx">
-                     <input type="checkbox" name="carnosidadcliente" value="Carnosidad: <i class='fa fa-check'></i>" id="carnosidadcliente" />
-                     <label for="carnosidadcliente">Carnosidad</label>
                    </span>
                  </div>
                </div>
@@ -713,7 +704,6 @@
                      <li class="list-group-item" var="cliente.miodesopsia" style="text-align:center">43</li>
                      <li class="list-group-item" var="cliente.anillos" style="text-align:center">43</li>
                      <li class="list-group-item" var="cliente.hipersensibilidad" style="text-align:center">43</li>
-                     <li class="list-group-item" var="cliente.carnosidad" style="text-align:center">43</li>
                    </ul>
                  </div>
                </div>
@@ -983,7 +973,6 @@
     <script src="js/firebase.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/bootstrap-select.js"></script>
-    
 
     <!-- Our Website Javascripts -->
     <script src="js/isotope.min.js" type="text/javascript"></script>
@@ -1008,7 +997,6 @@
     <script src="js/styleswitcher.js" type="text/javascript"></script>
     <script src="js/bootstrap-dropdown.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
-    <script src="js/es.js" type="text/javascript"></script>
         <script>
              $(function() {
                  $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });

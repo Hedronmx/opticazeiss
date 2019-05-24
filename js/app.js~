@@ -465,7 +465,6 @@ forma.addEventListener('submit', (e) => {
     var miodesopsia;
     var anillos;
     var hipersensibilidad;
-    var carnosidad;
 
 
     if (forma.diabetes.checked) {
@@ -514,12 +513,6 @@ forma.addEventListener('submit', (e) => {
         ceguera = forma.ceguera.value
     } else {
         ceguera = "Ceguera:";
-    }
-    
-    if (forma.carnosidad.checked) {
-        carnosidad = forma.carnosidad.value
-    } else {
-        carnosidad = "Carnosidad:";
     }
 
     if (forma.dolorojos.checked) {
@@ -595,7 +588,6 @@ forma.addEventListener('submit', (e) => {
             traumatismo: traumatismo,
             miodesopsia: miodesopsia,
             anillos: anillos,
-            carnosidad: carnosidad,
             hipersensibilidad: hipersensibilidad,
             sphod: forma.sphod.value,
             cilod: forma.cilod.value,
@@ -677,12 +669,6 @@ function cerrar() {
         $('#sinusitiscliente').prop('checked', true);
     } else {
         $('#sinusitiscliente').prop('checked', false);
-    }
-    
-    if (cliente.carnosidad == "Carnosidad: <i class='fa fa-check'></i>") {
-        $('#carnosidadcliente').prop('checked', true);
-    } else {
-        $('#carnosidadcliente').prop('checked', false);
     }
 
     if (cliente.dolordecabeza == "Dolor de Cabeza: <i class='fa fa-check'></i>") {
@@ -831,7 +817,6 @@ editar.addEventListener('submit', (e) => {
     var miodesopsia;
     var anillos;
     var hipersensibilidad;
-    var carnosidad;
 
     var fechanueva = new Date();
 
@@ -849,12 +834,6 @@ editar.addEventListener('submit', (e) => {
         hipertension = editar.hipertensioncliente.value
     } else {
         hipertension = "Hipertensión:";
-    }
-    
-    if (editar.carnosidadcliente.checked) {
-        carnosidad = editar.carnosidadcliente.value
-    } else {
-        carnosidad = "Carnosidad:";
     }
 
     if (editar.sinusitiscliente.checked) {
@@ -958,7 +937,6 @@ editar.addEventListener('submit', (e) => {
             cataratas: cataratas,
             glaucoma: glaucoma,
             ceguera: ceguera,
-            carnosidad: carnosidad,
             otro: editar.otrocliente.value,
             dolorojos: dolorojos,
             ojosllorosos: ojosllorosos,
@@ -1091,7 +1069,6 @@ function rendercliente(id) {
                 ejeod: doc.data().ejeod,
                 ejeoi: doc.data().ejeoi,
                 addod: doc.data().addod,
-                carnosidad: doc.data().carnosidad,
                 addoi: doc.data().addoi,
                 diamod: doc.data().diamod,
                 diamoi: doc.data().diamoi,
