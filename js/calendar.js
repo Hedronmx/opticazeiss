@@ -47,30 +47,55 @@ function collect (){
 	        if (change.type == 'added') {
 	                var cal ={}
 	                var cal2 = {}
+	                var fechainicio = null;
+	                var fechafinal = null;
+	                var fechanueva = null;
+	                var fechanuevaend = null;
 
 	                if (change.doc.data().proximacita != ''){
-	                    cal.start=change.doc.data().proximacita
+	                    var str = change.doc.data().proximacita
+	                    var dia = str.substring(0, 2)
+	                    var mes = str.substring(3, 5)
+	                    var ano = str.substring(6, 10)
+	                    fechainicio = mes + '/'+dia + '/' +ano
+	                    cal.start=fechainicio
 	                } else {
 	                    cal.start = '1/1/1990'
 	                }
 
     	            if (change.doc.data().proximacita != ''){
-	                    cal.end = change.doc.data().proximacita
+	                    var str = change.doc.data().proximacita
+	                    var dia = str.substring(0, 2)
+	                    var mes = str.substring(3, 5)
+	                    var ano = str.substring(6, 10)
+	                    fechafinal = mes + '/'+dia + '/' +ano
+	                    console.log(fechainicio)
+	                    cal.end = fechafinal
 	                } else {
 	                    cal.end = '1/1/1990'
 	                }
 
 
 	                if (change.doc.data().nuevafecha != undefined){
-	                    cal2.start=change.doc.data().nuevafecha
+	                    var str = change.doc.data().nuevafecha
+	                    var dia = str.substring(0, 2)
+	                    var mes = str.substring(3, 5)
+	                    var ano = str.substring(6, 10)
+	                    fechanueva = mes + '/'+dia + '/' +ano
+	                    cal2.start=fechanueva
 	                    cal2.title=change.doc.data().nombre
         	            cal2.id=change.doc.id
 	                } else {
 	                    cal2.start = '1/1/1990'
 	                }
 
-    	            if (change.doc.data().nuevafecha != ''){
-	                    cal2.end = change.doc.data().nuevafecha
+    	            if (change.doc.data().nuevafecha != undefined){
+    	                var str = change.doc.data().nuevafecha
+	                    var dia = str.substring(0, 2)
+	                    var mes = str.substring(3, 5)
+	                    var ano = str.substring(6, 10)
+	                    fechanuevaend = mes + '/'+dia + '/' +ano
+	                    cal2.end = fechanuevaend
 	                } else {
 	                    cal2.end = '1/1/1990'
 	                }
@@ -1284,7 +1309,7 @@ function crearcalendario () {
          });
      }
      
-     moment().format('YYYY-MM-DD')
+     moment().format('MM-DD-YYYY')
 };
 
 function sendmail() {
